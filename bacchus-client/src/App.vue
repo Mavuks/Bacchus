@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <nav-bar/>
+    <div  id="nav">
+            <router-link to="/">Home</router-link> |
+    </div>
 
 
   </div>
@@ -9,13 +11,13 @@
 </template>
 
 <script>
-import NavBar from './components/Nav/Navbar'
+//import NavBar from './components/Nav/Navbar'
 
 
 export default {
   name: 'App',
   components: {
-    NavBar
+    //NavBar
   }
 }
 </script>
