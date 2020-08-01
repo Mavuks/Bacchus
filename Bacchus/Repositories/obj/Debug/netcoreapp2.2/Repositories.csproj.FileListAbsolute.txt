@@ -1,0 +1,12 @@
+C:\Users\Laptop\Desktop\Bacchus\Bacchus\Repositories\bin\Debug\netcoreapp2.2\Repositories.deps.json
+C:\Users\Laptop\Desktop\Bacchus\Bacchus\Repositories\bin\Debug\netcoreapp2.2\Repositories.dll
+C:\Users\Laptop\Desktop\Bacchus\Bacchus\Repositories\bin\Debug\netcoreapp2.2\Repositories.pdb
+C:\Users\Laptop\Desktop\Bacchus\Bacchus\Repositories\bin\Debug\netcoreapp2.2\Domain.dll
+C:\Users\Laptop\Desktop\Bacchus\Bacchus\Repositories\bin\Debug\netcoreapp2.2\Domain.pdb
+C:\Users\Laptop\Desktop\Bacchus\Bacchus\Repositories\obj\Debug\netcoreapp2.2\Repositories.csprojAssemblyReference.cache
+C:\Users\Laptop\Desktop\Bacchus\Bacchus\Repositories\obj\Debug\netcoreapp2.2\Repositories.AssemblyInfoInputs.cache
+C:\Users\Laptop\Desktop\Bacchus\Bacchus\Repositories\obj\Debug\netcoreapp2.2\Repositories.AssemblyInfo.cs
+C:\Users\Laptop\Desktop\Bacchus\Bacchus\Repositories\obj\Debug\netcoreapp2.2\Repositories.csproj.CoreCompileInputs.cache
+C:\Users\Laptop\Desktop\Bacchus\Bacchus\Repositories\obj\Debug\netcoreapp2.2\Repositories.csproj.CopyComplete
+C:\Users\Laptop\Desktop\Bacchus\Bacchus\Repositories\obj\Debug\netcoreapp2.2\Repositories.dll
+C:\Users\Laptop\Desktop\Bacchus\Bacchus\Repositories\obj\Debug\netcoreapp2.2\Repositories.pdb
