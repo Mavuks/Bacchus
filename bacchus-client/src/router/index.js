@@ -21,9 +21,10 @@ Vue.use(VueRouter)
     props:(route) => ({ category: route.params.category || '' }),
     children: [
       {
-        path: "/Auction",
-        name: "Bidding",
+        path: "/Auction/:id",
+        name: "Auction",
         component: Bidding,
+        props: true
       }
     ]
   }

@@ -77,6 +77,7 @@ namespace Bacchus.Controllers
         [HttpPost]
         public async Task<ActionResult<Bidding>> PostBidding(Bidding bidding)
         {
+            
             _context.Biddings.Add(bidding);
             await _context.SaveChangesAsync();
 

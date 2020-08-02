@@ -13,7 +13,7 @@
                 </tr>
               </thead>
               <tbody >
-                <td>{{auction.productName}}</td>
+                <td> {{auction.productName}}</td>
                 <td> {{auction.productDescription}}</td>
                 <td> {{auction.productCategory  }}</td>
                 <td> {{auction.biddingEndDate | capitalize}}</td>
@@ -24,7 +24,7 @@
        </table>
 
 
-        <form>
+        <div>
           <div class="form-group row">
             <label  class="col-sm-2 col-form-label">First Name</label>
             <div class="col-sm-10">
@@ -40,13 +40,13 @@
           <div class="form-group row">
             <label  class="col-sm-2 col-form-label">Sum</label>
             <div class="col-sm-10">
-              <input type="number"  class="form-control" v-model="Sum" >
+              <input type="number"  class="form-control" v-model.number="Summa" >
             </div>
 
           </div>
 
           <button v-on:click="postBid()" class="btn-succsess">Place bidding</button>
-        </form>
+        </div>
 
 
   </div>
@@ -60,15 +60,20 @@ import moment from 'moment';
 
 export default {
   name: "auction",
-  props: ["auction"],
+  props:{
+    id:{
+      type: String
+    },
+
+    auction:{}
+  },
   data(){
     return{
-        Validation: [],
+
         datenow :'',
-        Sum: 0,
+        Summa:0,
         FirstName: "",
         LastName: "",
-
 
     }
   },
@@ -87,20 +92,18 @@ export default {
 
     postBid() {
     var data = {
-        AuctionProductId: this.auction.productId,
+        AuctionProductId: this.id,
         FirstName: this.FirstName,
         LastName: this.LastName,
-        Sum: this.Sum,
-        Datetime: this.getData(),
+        Sum:this.Summa,
+        DateTime: this.getData(),
 
           };
       http.post("api/Biddings", data)
 
         .then(response => {
             console.log(response)
-            console.log(this.FirstName)
-            console.log(this.Sum)
-           // this.$router.push('/')
+            this.$router.push("/Auction")
 
         })
         .catch(e => {
@@ -111,6 +114,7 @@ export default {
   },
   mounted() {
     this.interval = setInterval(this.time, 1000);
+    this.id.forceUpdate = true;
   },
 
    beforeDestroy() {

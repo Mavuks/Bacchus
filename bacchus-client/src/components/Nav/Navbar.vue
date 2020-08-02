@@ -1,7 +1,7 @@
 <template>
       <div id="nav">
         <router-link to="/">Home</router-link> |
-        <router-link to="/Auction">Auction</router-link> |
+        <router-link to="/Auction/">Auction</router-link> |
           <div v-for="(asd, index) in category" :key="index">
 
           <router-link :to="{name : 'auction',  params: {category: category, category: asd }}">{{asd}}</router-link> |
