@@ -14,7 +14,6 @@ Vue.use(VueRouter)
     name: 'Home',
     component: Home
   },
-
   {
     path: '/Auction/:category?',
     name: 'auction',
@@ -22,16 +21,16 @@ Vue.use(VueRouter)
     props:(route) => ({ category: route.params.category || '' }),
     children: [
       {
-        path: "/Auction/",
+        path: "/Auction",
         name: "Bidding",
         component: Bidding,
-        props: true
       }
     ]
   }
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 

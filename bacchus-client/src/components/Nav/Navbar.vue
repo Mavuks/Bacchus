@@ -1,20 +1,19 @@
 <template>
-
-      <div  id="nav">
-            <router-link to="/">Home</router-link> |
-          <!-- <div id="nav" v-for="(asd, index) in category" :key="index" >
+      <div id="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/Auction">Auction</router-link> |
+          <div v-for="(asd, index) in category" :key="index">
 
           <router-link :to="{name : 'auction',  params: {category: category, category: asd }}">{{asd}}</router-link> |
 
-          </div> -->
+          </div>
 
-<!--       <router-link to="/">Home</router-link> |
+     <!--  <router-link to="/">Home</router-link> |
+      <router-link to="/Auction">Auction</router-link> |
       <router-link to="/Auction/foo">Auction</router-link> |
-      <router-link to="/auction/bar">Auction</router-link> |
-      <router-link to="/Auction/asd">proov</router-link> | -->
+      <router-link to="/Auction">proov</router-link> | -->
 
     </div>
-
 
 </template>
 
@@ -30,7 +29,7 @@ export default {
   data() {
 
     return {
-      category:[],
+        category:[],
       auctions: []
         };
   },
@@ -47,7 +46,7 @@ export default {
           this.auctions = response.data;
           console.log(this.auctions)
            this.category = this.uniqueCategory();
-            console.log(this.category);
+
 
         })
         .catch(e => {

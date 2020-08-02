@@ -12,13 +12,13 @@
                 </tr>
               </thead>
               <tbody v-for="(auction, index) in filteredAuctions" :key="index">
-                <td>{{auction.productName}}</td>
-                <td> {{auction.productDescription}}</td>
-                <td> {{auction.productCategory  }}</td>
-                <td> {{auction.biddingEndDate | capitalize}}</td>
-                <td>   <router-link :to="{
+                <td v-if="auction">{{auction.productName}}</td>
+                <td v-if="auction"> {{auction.productDescription}}</td>
+                <td v-if="auction"> {{auction.productCategory  }}</td>
+                <td v-if="auction"> {{auction.biddingEndDate | capitalize}}</td>
+                <td v-if="auction">   <router-link :to="{
                             name: 'Bidding',
-                            params: {auction: auction, productId: auction.productId }
+                            params: {auction: auction}
                         }">Bidding
                         </router-link>
                          </td>
@@ -42,16 +42,17 @@ import moment from 'moment'
 
 
 export default {
-  name: "Auctionlist",
-  /* props:{
+  name: "Auction-List",
+  props:{
     category:{
       type: String
     }
-  }, */
+  },
   data() {
 
     return {
-      category: "",
+
+
       auctions: []
         };
   },
@@ -80,9 +81,15 @@ export default {
 
   computed: {
     filteredAuctions: function(){
+      if(this.category == ''){
+        return this.auctions.filter((auction) =>{
+        return auction.productCategory.match();
+      })
+      }else{
       return this.auctions.filter((auction) =>{
         return auction.productCategory.match(this.category);
       })
+    }
     }
   },
   filters:

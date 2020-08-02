@@ -63,8 +63,7 @@ export default {
   props: ["auction"],
   data(){
     return{
-        proov:[],
-
+        Validation: [],
         datenow :'',
         Sum: 0,
         FirstName: "",
@@ -84,12 +83,14 @@ export default {
     },
 
 
+
+
     postBid() {
     var data = {
         AuctionProductId: this.auction.productId,
         FirstName: this.FirstName,
         LastName: this.LastName,
-        Sum: 200,
+        Sum: this.Sum,
         Datetime: this.getData(),
 
           };
@@ -99,6 +100,7 @@ export default {
             console.log(response)
             console.log(this.FirstName)
             console.log(this.Sum)
+           // this.$router.push('/')
 
         })
         .catch(e => {
@@ -106,24 +108,11 @@ export default {
         });
     },
 
-    getmidagi(){
-         http
-        .get("api/Biddings")
-        .then(response => {
-          this.proov = response.data;
-          console.log(this.proov);
-          console.log(this.getData());
-        })
-        .catch(e => {
-          console.log(e);
-        });
-      },
-
   },
   mounted() {
-    this.interval = setInterval(this.time, 1000)
-
+    this.interval = setInterval(this.time, 1000);
   },
+
    beforeDestroy() {
     clearInterval(this.interval)
   },
