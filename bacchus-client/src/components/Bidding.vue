@@ -113,11 +113,11 @@ export default {
                 if(response.data === 400){
 
                   this.Errors.push("auction object is expired!")
-                  setTimeout( () => this.$router.go(-1), 2000);
+                  setTimeout( () => this.$router.go({name:'auction', params:{category: 'default'}}), 2000);
 
                 }else{
                 this.Errors.push("Bid is Placed!")
-                setTimeout( () => this.$router.go(-1), 2000);
+                setTimeout( () => this.$router.go({name:'auction', params:{category: this.category}}), 2000);
                 }
 
         })
