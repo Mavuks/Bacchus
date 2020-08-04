@@ -18,7 +18,7 @@
                 <td> {{auction.biddingEndDate | capitalize}}</td>
                 <td >   <router-link :to="{
                             name: 'Auction',
-                            params: {auction: auction, id: auction.productId}
+                            params: {auction: auction, id: auction.productId, category: category}
                         }">Bidding
                         </router-link>
                          </td>
@@ -56,6 +56,7 @@ export default {
   methods: {
 
     retrieveAuctionList() {
+      this.$forceUpdate();
       AuctionDataService.getAll()
         .then(response => {
           this.auctions = response.data;
@@ -74,11 +75,12 @@ export default {
 
   mounted() {
     this.retrieveAuctionList();
+    this.$forceUpdate()
   },
 
   computed: {
     filteredAuctions: function(){
-      if(this.category == ''){
+      if(this.category == 'default'){
         return this.auctions.filter((auction) =>{
         return auction.productCategory.match();
       })

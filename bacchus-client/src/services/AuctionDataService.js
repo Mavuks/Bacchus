@@ -5,7 +5,7 @@ class AuctionDataService {
     return http.get("api/auction");
   }
   postBidding(data){
-    return http.post(`Biddings`, data);
+    return http.post(`api/Biddings`, data);
   }
 
 

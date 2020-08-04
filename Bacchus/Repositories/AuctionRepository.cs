@@ -5,16 +5,25 @@ using Domain;
 using Newtonsoft.Json;
 using RestSharp;
 using Newtonsoft.Json.Linq;
+using Microsoft.Extensions.Configuration;
 
 namespace Repositories
 {
     public class AuctionRepository : IAuctionRepository
+
+        
     
     {
-        
+        private IConfiguration Configuration { get; }
+
+        public AuctionRepository(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public List<Auction> GetItems()
         {
-            var client = new RestClient("http://uptime-auction-api.azurewebsites.net/api/Auction");
+            var client = new RestClient(Configuration["ApiUrl"]);
             var request = new RestRequest(Method.GET);
            
             

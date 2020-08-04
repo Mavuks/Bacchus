@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Repositories;
 
 namespace Bacchus.Controllers
 {
@@ -12,10 +15,13 @@ namespace Bacchus.Controllers
     public class BiddingsController : ControllerBase
     {
         private readonly BiddingContext _context;
+        
+        private readonly IAuctionRepository _auction;
 
-        public BiddingsController(BiddingContext context)
+        public BiddingsController(BiddingContext context, IAuctionRepository auctionRepository)
         {
             _context = context;
+            _auction = auctionRepository;
         }
 
         // GET: api/Biddings
@@ -75,13 +81,27 @@ namespace Bacchus.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Bidding>> PostBidding(Bidding bidding)
+        public async Task<HttpStatusCode> PostBidding(Bidding bidding)
         {
-            
-            _context.Biddings.Add(bidding);
-            await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBidding", new { id = bidding.Id }, bidding);
+            var auctions = _auction.GetItems();
+
+            bool containsItem = auctions.Any(item => item.productId == bidding.AuctionProductId);
+            if (containsItem)
+            {
+                
+                _context.Biddings.Add(bidding);
+                await _context.SaveChangesAsync();
+
+                return HttpStatusCode.Accepted;
+
+            }
+
+            return HttpStatusCode.BadRequest;
+
+
+
+
         }
 
         // DELETE: api/Biddings/5
