@@ -9,6 +9,7 @@
                   <th scope="col">Product Description</th>
                   <th scope="col">Product Category</th>
                   <th scope="col">Bidding EndDate</th>
+                  <th scope="col">Bidding</th>
                 </tr>
               </thead>
               <tbody v-for="(auction, index) in filteredAuctions" :key="index">

@@ -1,7 +1,6 @@
 <template>
   <div>
     <h4>Bidding:</h4>
-
      <table class="table table-striped border border-dark " >
               <thead class="thead-dark">
                <tr>
@@ -18,8 +17,6 @@
                 <td> {{auction.productCategory  }}</td>
                 <td> {{auction.biddingEndDate | capitalize}}</td>
                 <td> {{datenow}}</td>
-
-                <!-- <td>  <span class="button is-small btn-success" >Place A bidding </span></td> -->
               </tbody>
        </table>
 
@@ -49,16 +46,13 @@
               <input type="number"  class="form-control" v-model.number="Summa" >
             </div>
           </div>
-
           <button v-on:click="postBid()" class="btn-succsess">Place bidding</button>
         </div>
-
 
   </div>
 </template>
 
 <script>
-//import http from "../http-common"
 import moment from 'moment';
 import AuctionDataService from '../services/AuctionDataService';
 
@@ -93,9 +87,6 @@ export default {
       this.datenow = moment().format('DD.MM.YYYY HH:mm:ss')
     },
 
-
-
-
     postBid() {
     var data = {
         AuctionProductId: this.id,
@@ -108,30 +99,28 @@ export default {
           if(this.formIsValid){
              AuctionDataService.postBidding( data)
 
-              .then(response => {
-                console.log(response.data)
-                if(response.data === 400){
+            .then(response => {
+              console.log(response.data)
+              if(response.data === 400){
 
-                  this.Errors.push("auction object is expired!")
-                  setTimeout( () => this.$router.go({name:'auction', params:{category: 'default'}}), 2000);
+                this.Errors.push("auction object is expired!")
+                setTimeout( () => this.$router.go({name:'auction', params:{category: 'default'}}), 2000);
 
-                }else{
-                this.Errors.push("Bid is Placed!")
-                setTimeout( () => this.$router.go({name:'auction', params:{category: this.category}}), 2000);
-                }
-
+              }else{
+              this.Errors.push("Bid is Placed!")
+              setTimeout( () => this.$router.go({name:'auction', params:{category: this.category}}), 2000);
+              }
         })
         .catch(e => {
           console.log(e);
         });
 
-          }
+        }
 
     },
 
   },
   computed:{
-
 
       firstNameIsValid(){
       return !!this.FirstName
@@ -146,9 +135,6 @@ export default {
 
       return this.firstNameIsValid && this.lastNameIsValid && this.SumIsValid
     }
-
-
-
 
   },
   mounted() {

@@ -8,12 +8,6 @@ class AuctionDataService {
     return http.post(`api/Biddings`, data);
   }
 
-
-
-
-
-
-
 }
 
 export default new AuctionDataService();

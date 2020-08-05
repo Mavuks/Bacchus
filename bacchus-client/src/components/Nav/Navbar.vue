@@ -9,16 +9,9 @@
         <p>---------------</p>
         <p>Auction categorys:</p>
           <div id="nav">
-
           <div v-for="(asd, index) in category" :key="index" >
-
-          <router-link :to="{name : 'auction',  params: {category: category, category: asd }} " v-model="proov">{{asd}}</router-link>
-                <!-- <div v-for="(dsa, index) in auctions" :key="dsa.productName">
-                  <p>{{dsa.productName}}</p>
-
-                </div> -->
-
-                <p>{{filteredItems(asd)}}</p>
+            <router-link :to="{name : 'auction',  params: {category: category, category: asd }} " v-model="proov">{{asd}}</router-link>
+            <p>{{filteredItems(asd)}}</p>
           </div>
         </div>
       </div>
@@ -35,7 +28,7 @@ export default {
   data() {
 
     return {
-      proov:"",
+
       category:[],
       auctions: []
         };
@@ -56,7 +49,6 @@ export default {
           this.auctions = response.data;
           console.log(this.auctions)
            this.category = this.uniqueCategory();
-          console.log(this.filteredItems(this.proov))
 
         })
         .catch(e => {
@@ -71,16 +63,9 @@ export default {
 
   mounted() {
     this.retrieveAuctionList();
-    console.log(this.proov)
+
   },
-/*   computed: {
-    filteredAuctions: function(){
 
-     return  this.auctions.filter(function(auction){return auction.productCategory === this.proov})
-
-
-    }
-  }, */
 
 };
 </script>
